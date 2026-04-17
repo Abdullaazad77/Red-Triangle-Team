@@ -3,7 +3,7 @@
 // =========================================
 const BASE_PRICE = 20000; // تم جعلها صفر لأن أسعار القائمة المنسدلة كاملة (40 ألف، 35 ألف..الخ)
 const PRACTICAL_PRICE = 40000; // سعر الجانب العملي
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxzlx7KOpKFoA7thKQpDMluQ4b7vrRb_SJFHJoCAT6R5dANKVtt2lS4o9mUMthDqpzm/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxY0JJ4KT1RpYPEjwaLeuU3FLJM9-aBUzdlIg8MGLCUwuAyBRiKjkgGEMq8NeUQ7Uf1/exec";
 
 let isDiscountApplied = false;
 
@@ -117,16 +117,66 @@ function calculate() {
 
 // تحديث السعر عند أي تغيير (اختيار خدمة، ضغط على جانب عملي، الخ)
 document.getElementById('orderForm').addEventListener('change', calculate);
+// =========================================
+// نظام رفع الملفات (اختيار الملف وعرض اسمه)
+// =========================================
+const fileInput = document.getElementById('projectFile');
+if (fileInput) {
+    fileInput.addEventListener('change', function (e) {
+        const fileName = e.target.files[0] ? e.target.files[0].name : "لم يتم اختيار ملف";
+        document.getElementById('fileNameDisplay').innerText = "تم اختيار: " + fileName;
+        document.querySelector('.file-upload-wrapper').style.borderColor = "#d4af37";
+    });
+}
 
-document.getElementById('orderForm').addEventListener('submit', function (e) {
+// =========================================
+// إرسال البيانات والملفات لجوجل
+// =========================================
+// لاحظ أننا أضفنا كلمة async قبل function لأننا سننتظر تحميل الملف
+document.getElementById('orderForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
+    // 1. إظهار شاشة التحميل وإخفاء زر الإرسال
     document.getElementById('loading').style.display = 'block';
     const submitBtn = document.querySelector('.submit-btn');
     if (submitBtn) submitBtn.style.display = 'none';
 
+    // 2. معالجة الملف (إذا قام العميل برفع ملف)
+    const file = fileInput ? fileInput.files[0] : null;
+    let fileData = { base64: "", type: "", name: "" };
+
+    if (file) {
+        if (file.size > 10 * 1024 * 1024) { // 10 ميجابايت
+            alert("الملف كبير جداً! الحد الأقصى هو 10 ميجابايت.");
+            document.getElementById('loading').style.display = 'none';
+            if (submitBtn) submitBtn.style.display = 'block';
+            return; // إيقاف الإرسال
+        }
+
+        // تحويل الملف إلى كود Base64
+        const reader = new FileReader();
+        const filePromise = new Promise((resolve) => {
+            reader.onload = (e) => {
+                resolve({
+                    base64: e.target.result.split(',')[1],
+                    type: file.type,
+                    name: file.name
+                });
+            };
+            reader.readAsDataURL(file);
+        });
+        fileData = await filePromise; // انتظار انتهاء التحويل
+    }
+
+    // 3. جمع باقي بيانات الفورم
     const serviceSelect = document.getElementById('serviceType');
     const serviceText = serviceSelect.options[serviceSelect.selectedIndex].text;
+
+    // دمج ملاحظة الخصم مع ملاحظات العميل لكي لا تضيع (لأن رابط الملف سيأخذ مكان حقل fileUrl)
+    let finalNotes = document.getElementById('notes') ? document.getElementById('notes').value : "";
+    if (isDiscountApplied && typeof SECRET_CONFIG !== 'undefined') {
+        finalNotes += "\n[ملاحظة النظام: العميل استخدم كود الخصم: " + SECRET_CONFIG.code + "]";
+    }
 
     const data = {
         clientName: document.getElementById('clientName').value,
@@ -139,17 +189,22 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
         isPractical: document.getElementById('isPractical').checked ? "نعم" : "لا",
         deadline: document.getElementById('deadline').value,
         expectedPrice: document.getElementById('priceValue').innerText,
-        notes: document.getElementById('notes') ? document.getElementById('notes').value : "",
-        fileUrl: isDiscountApplied ? "استخدم كود خصم: " + SECRET_CONFIG.code : ""
+        notes: finalNotes,
+
+        // بيانات الملف الجديدة
+        fileContent: fileData.base64,
+        fileType: fileData.type,
+        fileName: fileData.name
     };
 
+    // 4. إرسال الطلب للسيرفر
     fetch(WEB_APP_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(data)
     }).then(response => response.json())
         .then(res => {
-            alert("تم استلام طلبك بنجاح! سنتواصل معك قريباً لتأكيد التفاصيل.");
+            alert("تم استلام طلبك والملفات بنجاح! سنتواصل معك قريباً لتأكيد التفاصيل.");
             window.location.reload();
         }).catch(err => {
             alert("حدث خطأ أثناء الاتصال بالخادم، يرجى المحاولة لاحقاً.");
