@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب بحث تخرج - Red Triangle</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input {
+            transform: scale(1.5);
+            cursor: pointer;
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            color: var(--primary-gold);
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        #successMessage {
+            display: none;
+            background: #2e7d32;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <a class="logo" href="index.html"> <i id="triangle" class='bx bxl-play-store'></i></a>
+        <nav class="navbar">
+            <a href="index.html" class="active">العودة للرئيسية <i class='bx bx-arrow-back'></i></a>
+        </nav>
+    </header>
+
+    <div class="container-form">
+        <h2>نموذج طلب <span>بحث أكاديمي</span></h2>
+
+        <form id="orderForm">
+            <div class="form-group">
+                <label>الاسم الكامل</label>
+                <input type="text" id="clientName" required placeholder="الاسم الثلاثي">
+            </div>
+
+            <div class="form-group">
+                <label>رقم الهاتف (واتساب / تليجرام)</label>
+                <input type="tel" id="phone" required placeholder="07xxxxxxxxx" value="07750828279">
+            </div>
+
+            <div class="form-group">
+                <label>الجامعة والقسم</label>
+                <input type="text" id="university" required
+                    placeholder="مثال: جامعة كركوك - كلية الهندسة - قسم الحاسوب">
+            </div>
+
+            <div class="form-group">
+                <label>عنوان البحث</label>
+                <input type="text" id="researchTitle" required placeholder="العنوان المعتمد للبحث">
+            </div>
+
+            <div class="form-group">
+                <label>عدد الفصول المطلوبة</label>
+                <input type="number" id="chapters" min="1" max="10" value="4">
+            </div>
+
+            <div class="form-group">
+                <label>نوع الخدمة المطلوبة</label>
+                <select id="serviceType" required>
+                    <option value="0">اختر نوع الخدمة...</option>
+                    <option value="70000">كتابة البحث من البداية مع هيكلية تامة</option>
+                    <option value="30000">كتابة أجزاء أو فصول معينة</option>
+                    <option value="20000">إعادة صياغة البحث بالكامل</option>
+                    <option value="10000">تعديل البحث وترتيبه فقط</option>
+                </select>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="isPractical">
+                <label for="isPractical" style="margin-bottom:0;">يوجد جانب عملي (برمجة تطبيقات، تصميم، أو تحليل
+                    إحصائي)</label>
+            </div>
+
+            <div class="form-group">
+                <label>رابط الملفات (اختياري)</label>
+                <input type="url" id="fileUrl" placeholder="رابط Google Drive يحتوي على شعار الجامعة أو مصادر مشابهة">
+            </div>
+
+            <div class="form-group">
+                <label>موعد التسليم النهائي المطلوب</label>
+                <input type="date" id="deadline" required>
+            </div>
+
+            <div class="form-group">
+                <label>ملاحظات إضافية</label>
+                <textarea id="notes" placeholder="أي تفاصيل أخرى، عناوين الفصول إن وجدت..."></textarea>
+            </div>
+
+            <div class="price-display">
+                السعر التقديري:
+                <span id="priceValue">20,000 د.ع</span>
+            </div>
+
+            <button type="submit" class="submit-btn">إرسال الطلب الآن</button>
+            <div id="loading">جاري الإرسال للتأكيد...</div>
+            <div id="successMessage">تم إرسال طلبك بنجاح! سيتم التواصل معك قريباً.</div>
+        </form>
+    </div>
+
+    <script>
+        const BASE_PRICE = 20000;
+        const PRACTICAL_PRICE = 40000;
+
+        const serviceSelect = document.getElementById('serviceType');
+        const isPractical = document.getElementById('isPractical');
+        const deadlineInput = document.getElementById('deadline');
+        const priceDisplay = document.getElementById('priceValue');
+
+        function calculatePrice() {
+            let total = BASE_PRICE;
+            let serviceValue = parseInt(serviceSelect.value) || 0;
+            total += serviceValue;
+
+            if (isPractical.checked) { total += PRACTICAL_PRICE; }
+
+            if (deadlineInput.value) {
+                const today = new Date();
+                const deadlineDate = new Date(deadlineInput.value);
+                const timeDiff = deadlineDate.getTime() - today.getTime();
+                const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                if (daysDiff > 0 && daysDiff <= 2) { total = total * 1.5; }
+                else if (daysDiff > 2 && daysDiff <= 5) { total = total * 1.2; }
+            }
+
+            priceDisplay.innerText = total.toLocaleString('en-US') + " د.ع";
+        }
+
+        serviceSelect.addEventListener('change', calculatePrice);
+        isPractical.addEventListener('change', calculatePrice);
+        deadlineInput.addEventListener('change', calculatePrice);
+
+        // !!! ضع الرابط الخاص بك من جوجل هنا بدلاً من النص العربي !!!
+        // الرابط الخاص بك
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyfqQTHYBAVUdjz8VL7DEvWVhuRptB9LkqzWQgPDxYlpOrsjYykgrFylxRno6sF80sl/exec";
+
+        document.getElementById('orderForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // إظهار رسالة التحميل وإخفاء زر الإرسال
+            document.getElementById('loading').style.display = 'block';
+            document.querySelector('.submit-btn').style.display = 'none';
+
+            // تجميع البيانات من الحقول
+            const orderData = {
+                clientName: document.getElementById('clientName').value,
+                phone: document.getElementById('phone').value,
+                university: document.getElementById('university').value,
+                department: document.getElementById('university').value,
+                researchTitle: document.getElementById('researchTitle').value,
+                serviceType: serviceSelect.options[serviceSelect.selectedIndex].text,
+                chapters: document.getElementById('chapters').value,
+                isPractical: isPractical.checked ? "نعم" : "لا",
+                deadline: document.getElementById('deadline').value,
+                expectedPrice: document.getElementById('priceValue').innerText,
+                notes: document.getElementById('notes').value,
+                fileUrl: document.getElementById('fileUrl').value
+            };
+
+            // إرسال الطلب إلى خادم Google
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(orderData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // في حالة النجاح
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('orderForm').reset();
+                    calculatePrice();
+                })
+                .catch(error => {
+                    // في حالة وجود خطأ في الاتصال
+                    alert('حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقاً.');
+                    document.getElementById('loading').style.display = 'none';
+                    document.querySelector('.submit-btn').style.display = 'block';
+                });
+        });
+    </script>
+</body>
+
+</html>
