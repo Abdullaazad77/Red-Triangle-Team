@@ -14,7 +14,7 @@ class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 4 + 0.5; // أحجام صغيرة جداً
+        this.size = Math.random() * 6 + 0.5; // أحجام صغيرة جداً
         this.speedX = (Math.random() * 0.4) - 0.2; // حركة بطيئة يميناً ويساراً
         this.speedY = (Math.random() * 0.4) - 0.2; // حركة بطيئة للأعلى والأسفل
         this.color = colors[Math.floor(Math.random() * colors.length)];

@@ -3,7 +3,7 @@
 // =========================================
 const BASE_PRICE = 20000; // تم جعلها صفر لأن أسعار القائمة المنسدلة كاملة (40 ألف، 35 ألف..الخ)
 const PRACTICAL_PRICE = 40000; // سعر الجانب العملي
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwivTJcTMnVA17-eG2Jr1uFeFfsdQfouUf0n2jNzTeJ9sRci__JViR1HYCdmYbT9RZV/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxzlx7KOpKFoA7thKQpDMluQ4b7vrRb_SJFHJoCAT6R5dANKVtt2lS4o9mUMthDqpzm/exec";
 
 let isDiscountApplied = false;
 
