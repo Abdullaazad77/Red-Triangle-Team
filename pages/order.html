@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب بحث تخرج - Red Triangle</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="../index.html" style="text-decoration:none;"><i id="triangle" class='bx bxl-play-store'></i></a>
+        <a href="../index.html" style="color:#d4af37; text-decoration:none; font-weight:bold; font-size: 20px;">
+            العودة للرئيسية <i class='bx bx-arrow-back'></i>
+        </a>
+    </header>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="container-form" style="margin-top: 150px; position: relative; z-index: 10;">
+        <h2>نموذج طلب <span>بحث أكاديمي</span></h2>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <div class="progress-step active" id="stepIndicator1">1</div>
+            <div class="progress-step" id="stepIndicator2">2</div>
+            <div class="progress-step" id="stepIndicator3">3</div>
+        </div>
+
+        <div class="summary-box"
+            style="background: #1a1a1a; border: 1px solid #d4af37; border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.5);">
+            <div style="text-align: center; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px;">
+                <p style="color: #a0a0a0; font-size: 16px; margin-bottom: 5px;">السعر التقديري لطلبك</p>
+                <h2 style="color: #d4af37; font-size: 35px; margin: 0;"><span id="priceValue" class="price-animate">0
+                        د.ع</span></h2>
+            </div>
+            <div class="coupon-container"
+                style="display: flex; gap: 10px; justify-content: center; align-items: center;">
+                <input type="text" id="couponInput" placeholder="أدخل كود الخصم (إن وجد)"
+                    style="flex: 1; max-width: 250px; text-align: center; border: 1px solid #444; background: #121212; padding: 12px; color: #fff; border-radius: 8px;">
+                <button type="button" class="btn-box" style="padding: 12px 25px; margin: 0; font-size: 14px;"
+                    onclick="applyDiscount()">تفعيل</button>
+            </div>
+            <p id="couponMessage"
+                style="font-size: 14px; text-align: center; margin-top: 12px; display: none; font-weight: bold;"></p>
+        </div>
+
+        <form id="orderForm">
+            <div class="form-step active-step" id="step1">
+                <h3 style="color:#d4af37; margin-bottom: 20px;">الخطوة 1: المعلومات الأساسية</h3>
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="clientName" required placeholder="يرجى إدخال اسمك الثلاثي">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف (واتساب/تليجرام)</label>
+                    <input type="tel" id="phone" value="07750828279" required>
+                </div>
+                <div class="form-group">
+                    <label>الجامعة والقسم</label>
+                    <input type="text" id="university" required placeholder="مثال: جامعة كركوك - هندسة حاسبات">
+                </div>
+                <div class="step-buttons">
+                    <button type="button" class="btn-box" style="width: 100%;" onclick="validateAndNext(1, 2)">
+                        التالي: تفاصيل البحث <i class='bx bx-left-arrow-alt'></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-step" id="step2">
+                <h3 style="color:#d4af37; margin-bottom: 20px;">الخطوة 2: تفاصيل البحث</h3>
+                <div class="form-group">
+                    <label>عنوان البحث</label>
+                    <input type="text" id="researchTitle" required placeholder="العنوان المقترح للبحث">
+                </div>
+                <div class="form-group">
+                    <label>نوع الخدمة</label>
+                    <select id="serviceType" required>
+                        <option value="" disabled selected>-- يرجى اختيار نوع الخدمة --</option>
+                        <option value="40000">كتابة بحث كامل (40 ألف)</option>
+                        <option value="35000">إعادة صياغة كاملة لتجنب الاستلال (35 ألف)</option>
+                        <option value="25000">كتابة أجزاء أو فصول معينة (25 ألف)</option>
+                        <option value="5000">تعديل وترتيب وتنسيق فقط (5 آلاف)</option>
+                    </select>
+                </div>
+                <div
+                    style="display:flex; gap:10px; align-items:center; margin-bottom:20px; background: rgba(212,175,55,0.1); padding: 15px; border-radius: 8px;">
+                    <input type="checkbox" id="isPractical" style="width:25px; height: 25px; cursor: pointer;">
+                    <label style="margin:0; font-size: 16px;">يوجد جانب عملي أو إحصائي (+40 ألف)</label>
+                </div>
+                <div class="step-buttons">
+                    <button type="button" class="btn-box btn-outline" style="flex: 1;" onclick="goToStep(1)">
+                        <i class='bx bx-right-arrow-alt'></i> السابق
+                    </button>
+                    <button type="button" class="btn-box" style="flex: 1;" onclick="validateAndNext(2, 3)">
+                        التالي: التسليم <i class='bx bx-left-arrow-alt'></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-step" id="step3">
+                <h3 style="color:#d4af37; margin-bottom: 20px;">الخطوة 3: التسليم والتأكيد</h3>
+                <div class="form-group">
+                    <label>موعد التسليم النهائي المطلوب</label>
+                    <input type="date" id="deadline" required>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label>ملاحظات إضافية</label>
+                    <textarea id="notes" rows="3" placeholder="أي تفاصيل أخرى تود إضافتها..."></textarea>
+                </div>
+
+                <div class="step-buttons">
+                    <button type="button" class="btn-box btn-outline" style="flex: 1;" onclick="goToStep(2)">
+                        <i class='bx bx-right-arrow-alt'></i> السابق
+                    </button>
+                    <button type="submit" class="submit-btn" style="flex: 2;">تأكيد وإرسال الطلب</button>
+                </div>
+                <p id="loading"
+                    style="display:none; text-align:center; color:#d4af37; margin-top:15px; font-weight: bold;">
+                    جاري إرسال طلبك...
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <script src="../js/anti-inspect.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/particles.js"></script>
+    <script src="../js/order.js"></script>
+
+</body>
+
+</html>
