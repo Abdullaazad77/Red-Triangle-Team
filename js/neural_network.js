@@ -6,8 +6,8 @@ canvas.height = window.innerHeight;
 
 let particlesArray = [];
 
-// إعدادات الشبكة
-const numberOfParticles = 100;
+// إعدادات الشبكة (ذكية: 100 نقطة للكمبيوتر و 40 فقط للهاتف لسرعة الأداء)
+const numberOfParticles = window.innerWidth < 768 ? 40 : 100;
 const maxDistance = 150; // المسافة التي يبدأ عندها رسم الخطوط
 const colors = ['rgba(255, 0, 0, 0.7)', 'rgba(212, 175, 55, 0.5)', 'rgba(255, 50, 50, 0.4)'];
 
@@ -77,11 +77,30 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
+// تشغيل النظام
 init();
 animate();
 
+// ==========================================
+// الحل الذكي لمنع التقطيع على شاشات الهواتف
+// ==========================================
+
+// حفظ العرض الأولي للشاشة
+let cachedWidth = window.innerWidth;
+
 window.addEventListener('resize', function () {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    init();
+    const newWidth = window.innerWidth;
+    const newHeight = window.innerHeight;
+
+    // التحقق: هل تغير العرض الفعلي للشاشة؟ (تدوير الهاتف أو تغيير حجم نافذة اللابتوب)
+    if (newWidth !== cachedWidth) {
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+        cachedWidth = newWidth; // تحديث العرض المحفوظ
+        init(); // إعادة رسم الكرات من الصفر لأن العرض تغير
+    } else {
+        // إذا كان التغيير في الطول فقط (بسبب اختفاء شريط متصفح الهاتف عند التمرير)
+        canvas.height = newHeight;
+        // لا يتم استدعاء init() لكي تستمر الكرات في السباحة بسلاسة تامة
+    }
 });

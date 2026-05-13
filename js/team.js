@@ -3,7 +3,10 @@
    ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('cvModal');
-    const closeBtn = document.querySelector('.close-cv');
+
+    // التعديل هنا: تحديد زر الإغلاق الموجود داخل الـ Modal الخاص بالـ CV فقط
+    const closeBtn = modal.querySelector('.close-cv');
+
     const teamCards = document.querySelectorAll('.team-card');
 
     const cvImage = document.getElementById('cvImage');
@@ -40,16 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
             certs.forEach(cert => { cvCertificates.innerHTML += `<li>${cert}</li>`; });
             tags.forEach(tag => { cvTags.innerHTML += `<span class="tech-tag">${tag.trim()}</span>`; });
 
-            // إظهار النافذة (الـ CSS سيتكفل بالانبثاق السلس)
+            // إظهار النافذة
             modal.classList.add('show');
         });
     });
 
-    // إغلاق النافذة
+    // إغلاق النافذة عند الضغط على زر (X)
     closeBtn.addEventListener('click', () => {
         modal.classList.remove('show');
     });
 
+    // إغلاق النافذة عند الضغط في أي مكان خارج البطاقة
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.classList.remove('show');
