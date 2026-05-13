@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Triangle Studio - فريق المثلث الأحمر</title>
+
+    <meta name="description"
+        content="فريق هندسي متكامل لتقديم أفضل الحلول البرمجية، أنظمة الذكاء الاصطناعي، الهاردوير، والمساعدة في البحوث الأكاديمية.">
+    <meta name="keywords" content="برمجة, ذكاء اصطناعي, اردوينو, مشاريع تخرج, المثلث الأحمر, Red Triangle">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="فريق المثلث الأحمر | للحلول البرمجية">
+    <meta property="og:description" content="نبتكر أنظمة برمجية وهندسية تسبق التوقعات. تصفح أعمالنا واطلب مشروعك الآن!">
+    <meta property="og:image" content="pics/icon (2).png">
+    <meta property="og:url" content="https://yourdomain.com">
+
+    <link rel="icon" type="image/png" href="pics/icon (2).png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <canvas id="particles-canvas"></canvas>
+    <header class="header">
+        <a class="logo" href="#"> <i id="triangle" class='bx bxl-play-store'></i></a>
+        <nav class="navbar">
+            <a href="#home">الرئيسية</a>
+            <a href="#about">من نحن</a>
+            <a href="#services">خدماتنا</a>
+            <a href="pages/projects.html">أعمالنا</a>
+            <a href="#team">فريقنا</a>
+            <a href="#contact">اتصل بنا</a>
+            <a href="pages/blog.html">المدونة التقنية</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>أهلاً بك، هذا فريق <span>Red Triangle</span></h3>
+            <h1>استوديو التطوير والبرمجة</h1>
+            <p>نقدم خدمات احترافية ومتكاملة تشمل تصميم واجهات المستخدم (UI/UX)، برمجة وتطوير المواقع، وبناء تطبيقات
+                الهواتف الذكية بأحدث التقنيات البرمجية.</p>
+
+
+            <div class="home-sci">
+                <a href="#"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instagram.com/2azd0/" target="_blank"><i class="bx bxl-instagram-alt"></i></a>
+                <a href="https://t.me/ll0_n" target="_blank"><i class="bx bxl-telegram"></i></a>
+                <a href="https://wa.me/9647750828279" target="_blank"><i class="bx bxl-whatsapp"></i></a>
+            </div>
+
+            <div class="btn-group">
+                <a href="#about" class="btn-box">المزيد عن الفريق</a>
+                <a href="pages/projects.html" class="btn-box">تصفح أعمالنا</a>
+
+                <div class="soon-box">
+                    <a href="pages/order.html" class="btn-box btn-outline">طلب بحث أكاديمي </a>
+
+
+                    <a href="#" class="btn-box btn-outline btn-soon" onclick="comingSoon(event)(event)">طلب تصميم موقع
+                        <span class="badge">قريباً</span></a>
+
+
+                    <a href="#" class="btn-box btn-outline btn-soon" onclick="comingSoon(event)">طلب تطبيق <span
+                            class="badge">قريباً</span></a>
+
+                    <a href="#" class="btn-box btn-outline btn-soon" onclick="comingSoon(event)">طلب مشاريع
+                        الكترونية<span class="badge">قريباً</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-image">
+            <i id="photo1" class='bx bxl-play-store'></i>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-text">
+            <h2 class="sub-title">من <span class="cyber-text">نحن؟</span></h2>
+            <p>نحن "المثلث الأحمر"، مجموعة من المهندسين والمطورين نمتلك مهارات متعددة في تصميم وتطوير المواقع وتطبيقات
+                الهواتف. رغم أننا حديثو العهد في السوق، إلا أننا مستعدون تماماً لإنجاز مشاريعك التقنية أو الأكاديمية
+                بأعلى جودة وفي الوقت المحدد.</p>
+            <a href="pages/legal.html" style="color: #d4af37; font-size: 14px; text-decoration: underline;">مراجعة شروط
+                الخدمة
+                والخصوصية</a>
+        </div>
+    </section>
+
+
+    <section id="services">
+        <h1 class="sub-title">خدماتنا <span class="cyber-text">المتميزة</span></h1>
+        <div class="services-list">
+            <div><i class='bx bx-laptop'></i>
+                <h2>تصميم واجهات</h2>
+                <p>نبتكر تجارب مستخدم سلسة وتصاميم بصرية مريحة تتوافق مع جميع الأجهزة.</p>
+            </div>
+
+            <div><i class='bx bx-code-alt'></i>
+                <h2>برمجة ويب</h2>
+                <p>تطوير أنظمة خلفية قوية وآمنة، وبرمجة واجهات برمجية للتطبيقات (APIs).</p>
+            </div>
+
+            <div><i class='bx bx-mobile-alt'></i>
+                <h2>تطبيقات الهواتف</h2>
+                <p>برمجة وتطوير تطبيقات ذكية وسريعة لأنظمة (Android & iOS) بأحدث التقنيات.</p>
+            </div>
+
+            <div><i class='bx bxs-graduation'></i>
+                <h2>بحوث أكاديمية</h2>
+                <p>مساعدة الطلاب في كتابة وتنسيق بحوث التخرج مع تقديم الجانب العملي البرمجي بدقة.</p>
+            </div>
+
+            <div><i class='bx bx-chip'></i>
+                <h2>أنظمة مدمجة و Arduino</h2>
+                <p>برمجة الهاردوير، تصميم الدوائر الذكية، وتنفيذ مشاريع الأردوينو وأنظمة التحكم (IoT).</p>
+            </div>
+
+            <div><i class='bx bx-brain'></i>
+                <h2>الذكاء الاصطناعي والأمن</h2>
+                <p>بناء نماذج تعلم الآلة، تحليل البيانات، وتطوير أنظمة كشف التسلل والتهديدات السيبرانية.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <h1 class="sub-title">أعضاء <span class="cyber-text">الفريق</span></h1>
+        <div class="team">
+            <div class="person1 team-card" data-name="أزاد (Azad)" data-role="مدير المنتج ومهندس AI"
+                data-experience="متخصص في قيادة الفرق البرمجية وتطوير أنظمة الذكاء الاصطناعي. يمتلك خبرة عميقة في تحليل البيانات وبناء خوارزميات تعلم الآلة المتقدمة للكشف عن التهديدات السيبرانية."
+                data-projects='["نظام كشف التسلل بالذكاء الاصطناعي (IDS)", "خوارزمية تحليل الروابط الخبيثة", "تصميم واجهات منصة المثلث الأحمر"]'
+                data-certs='["شهادة في هندسة تعلم الآلة", "ممارس أمن سيبراني معتمد", "كورس المهارات القيادية في المشاريع التقنية"]'
+                data-tags="Python, ML, SQL, Management,C++,C#,HTML,JS">
+                <img src="pics/AZ.jpg" alt="Azad">
+                <div class="text-name-job">
+                    <p>المبرمج أزاد</p>
+                    <p>مدير المنتج (Product Manager)</p>
+                </div>
+            </div>
+
+
+            <div class="person1 team-card" data-name="علي عامر (Ali Amer)" data-role="مبرمج ومطور نظم"
+                data-experience="مبرمج محترف يهتم بكتابة أكواد نظيفة وقابلة للتطوير. يركز على بناء الهياكل الخلفية (Backend) القوية للمشاريع الأكاديمية والتجارية."
+                data-projects='["بناء نظام إدارة قواعد البيانات للمتجر", "تطوير واجهة API للاتصال الآمن", "مشاركة في هاكاثون الجامعة المركزي"]'
+                data-certs='["شهادة في البرمجة كائنية التوجه (OOP)", "أساسيات أمن المعلومات"]'
+                data-tags="C++, C#, ASP.NET, Backend">
+                <img src="pics/pro.png" alt="Ali">
+                <div class="text-name-job">
+                    <p>المبرمج علي عامر </p>
+                    <p>مبرمج (Programmer)</p>
+                </div>
+            </div>
+
+            <div class="person1 team-card" data-name="مصطفى (Mustafa)" data-role="المستشار القانوني للتقنية"
+                data-experience="طالب قانون مهتم بالجوانب القانونية المرتبطة بالتقنية، يركز على تنظيم العقود، حماية الملكية الفكرية، وضمان الالتزام القانوني في المشاريع الأكاديمية والتقنية."
+                data-projects='["إعداد الشروط والأحكام (Terms & Conditions)", "كتابة سياسات الخصوصية وحماية البيانات", "تنظيم عقود المشاريع التقنية", "تقديم استشارات قانونية برمجية"]'
+                data-certs='["مؤتمر الذكاء الاصطناعي والابتكار 2025", "مؤتمر الناجون من الابتزاز الإلكتروني", "مؤتمر حماية حقوق المرأة والطفل", "فعاليات التوعية بالقانون الرقمي"]'
+                data-tags="Legal Tech, Intellectual Property, Privacy Policy, Digital Law,2+2=1">
+                <img src="pics/M2_l.jpg" alt="Mustafa">
+                <div class="text-name-job">
+                    <p>القانوني مصطفى</p>
+                    <p>المستشار القانوني (Legal Advisor)</p>
+                </div>
+            </div>
+
+
+
+            <div class="person1 team-card" data-name="علي (Ali)" data-role="مهندس كهرباء وأنظمة تحكم"
+                data-experience="طالب هندسة كهرباء متخصص في الإلكترونيات وأنظمة التحكم والطاقة المتجددة. خبير في تصميم وتنفيذ الأنظمة الذكية منخفضة التكلفة باستخدام Arduino و ESP8266 وابتكار حلول هندسية عملية."
+                data-projects='["نظام رادار مصغر (Arduino & Processing)", "نظام التحكم بمحركات DC", "تحكم لاسلكي عبر وحدة ESP8266", "تصميم درون كشف الأعطال الحرارية"]'
+                data-certs='["شهادة في الطاقة الشمسية من UNDP", "منظم مؤتمر الذكاء الاصطناعي", "شهادة مشاركة في TEDx", "دورة أنظمة التحكم والمحركات"]'
+                data-tags="Electrical Engineering, Control Systems, Arduino, Solar Energy,The Ktlwni">
+                <img src="pics/A_K1.jpg" alt="Ali">
+                <div class="text-name-job">
+                    <p>المهندس علي</p>
+                    <p>مهندس أنظمة تحكم (Control Systems Engineer)</p>
+                </div>
+            </div>
+
+            <div class="person1 team-card" data-name="فاضل عطا (Fadel Atta)" data-role="مصمم ويب ومتخصص عروض تقديمية"
+                data-experience="أمتلك اهتمامًا بمجال التقنية والتصميم، وأعمل بشكل متخصص في تصميم مواقع الويب، بالإضافة إلى إنشاء العروض التقديمية (Presentation) بأسلوب احترافي، سواء كانت ثنائية الأبعاد (2D) أو ثلاثية الأبعاد (3D)، مع التركيز على الجودة البصرية وتنظيم المحتوى بشكل جذاب وفعّال."
+                data-projects='["تصميم مواقع ويب تفاعلية", "عروض تقديمية 2D و 3D احترافية", "تنظيم وتصميم الهوية البصرية"]'
+                data-certs='["شهادة في تصميم واجهات الويب (UI/UX)", "احتراف تصميم العروض التقديمية", "أساسيات التصميم الجرافيكي"]'
+                data-tags="Web Design, UI/UX, 2D/3D Presentations, HTML, CSS, Graphic Design">
+                <img src="pics/pro.png" alt="Fadel">
+                <div class="text-name-job">
+                    <p>المصمم فاضل عطا</p>
+                    <p>مصمم ويب وعروض تقديمية</p>
+                </div>
+            </div>
+
+            <div class="person1 team-card" data-name="أمير حيدر (Amir Haider)"
+                data-role="مصمم UI/UX ورسام ومطور حلول ذكاء اصطناعي"
+                data-experience="أجمع بين الإبداع الفني والتقني، حيث أعمل كمصمم واجهات مستخدم (UI/UX) ومحترف في تصميم عروض البوربوينت. أمتلك خبرة عملية في المشاركة في هاكثونات مطوري البرامج، بالإضافة إلى الجانب البرمجي في تطوير موديلات الذكاء الاصطناعي لكشف الروابط الخبيثة، مع خلفية فنية كرسام محترف تضفي لمسة إبداعية فريدة على مشاريعي الرقمية."
+                data-projects='["برمجة موديل كشف الروابط المزيفة (Malicious URL Detection)", "تصميم واجهات تطبيقات ومواقع ويب احترافية", "المشاركة في هاكثونات برمجية وطنية", "تصميم عروض تقديمية إبداعية ولوحات فنية رقمية"]'
+                data-certs='["شهادة مشاركة في هاكثون مطوري البرامج", "احتراف تصميم واجهات المستخدم UI/UX", "شهادة في برمجة موديلات تعلم الآلة", "تطوير الويب المتكامل"]'
+                data-tags="UI/UX Design, PowerPoint, AI Security, Machine Learning, Web Development, Digital Art, Hackathon Participant">
+                <img src="pics/pro.png" alt="Amir">
+                <div class="text-name-job">
+                    <p>المصمم أمير حيدر</p>
+                    <p>مصمم UI/UX ومطور حلول ذكاء اصطناعي</p>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+    <section id="testimonials" class="testimonials" style="padding: 50px 10%; background: var(--bg-color);">
+        <div class="reviews-header"
+            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 30px; gap: 15px;">
+            <h1 class="sub-title" style="margin: 0; padding: 0;">ماذا يقول <span class="cyber-text">عملاؤنا؟</span></h1>
+            <button id="openReviewModal" class="btn-box" style="padding: 10px 25px; font-size: 16px; margin: 0;">
+                <i class='bx bx-plus-circle'></i> أضف تقييمك
+            </button>
+        </div>
+
+        <div class="slider-container" style="position: relative; display: flex; align-items: center;">
+            <button id="slideRight" class="slider-arrow right-arrow"><i class='bx bx-chevron-right'></i></button>
+
+            <div id="reviewsWrapper" class="reviews-wrapper">
+
+                <div class="review-card skeleton-card" style="border-top-color: #333;">
+                    <div class="skeleton" style="width: 45px; height: 45px; border-radius: 50%; margin-bottom: 15px;">
+                    </div>
+                    <div class="skeleton skeleton-text" style="margin-bottom: 10px; height: 15px;"></div>
+                    <div class="skeleton skeleton-text" style="margin-bottom: 10px; height: 15px;"></div>
+                    <div class="skeleton skeleton-text short" style="height: 15px;"></div>
+                </div>
+                <div class="review-card skeleton-card" style="border-top-color: #333;">
+                    <div class="skeleton" style="width: 45px; height: 45px; border-radius: 50%; margin-bottom: 15px;">
+                    </div>
+                    <div class="skeleton skeleton-text" style="margin-bottom: 10px; height: 15px;"></div>
+                    <div class="skeleton skeleton-text" style="margin-bottom: 10px; height: 15px;"></div>
+                    <div class="skeleton skeleton-text short" style="height: 15px;"></div>
+                </div>
+                <div class="review-card skeleton-card" style="border-top-color: #333;">
+                    <div class="skeleton" style="width: 45px; height: 45px; border-radius: 50%; margin-bottom: 15px;">
+                    </div>
+                    <div class="skeleton skeleton-text" style="margin-bottom: 10px; height: 15px;"></div>
+                    <div class="skeleton skeleton-text" style="margin-bottom: 10px; height: 15px;"></div>
+                    <div class="skeleton skeleton-text short" style="height: 15px;"></div>
+                </div>
+
+            </div>
+
+            <button id="slideLeft" class="slider-arrow left-arrow"><i class='bx bx-chevron-left'></i></button>
+        </div>
+    </section>
+
+    <div id="reviewModal" class="cv-modal">
+        <div class="cv-content dossier-layout"
+            style="flex-direction: column; max-width: 500px; padding: 30px; gap: 15px;">
+            <span class="close-cv" id="closeReviewModal">&times;</span>
+            <h2 style="color: #d4af37; margin-bottom: 10px; border-bottom: 1px dashed #333; padding-bottom: 10px;">إضافة
+                تقييم جديد</h2>
+
+            <form id="addReviewForm">
+                <div class="form-group">
+                    <input type="text" id="revName" required placeholder="الاسم الكريم (أو الحروف الأولى)">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="revRole" required placeholder="صفتك (مثال: طالب، صاحب شركة)">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="color:#d4af37; display: block; margin-bottom: 8px;">التقييم من 5:</label>
+                    <select id="revStars" required
+                        style="width: 100%; padding: 12px; background: #111; color: #fff; border: 1px solid #444; border-radius: 8px;">
+                        <option value="5">⭐⭐⭐⭐⭐ (ممتاز جداً)</option>
+                        <option value="4">⭐⭐⭐⭐ (جيد جداً)</option>
+                        <option value="3">⭐⭐⭐ (جيد)</option>
+                        <option value="2">⭐⭐ (مقبول)</option>
+                        <option value="1">⭐ (ضعيف)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea id="revText" required placeholder="رأيك في خدماتنا أو الفائدة التي حصلت عليها..."
+                        rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitRevBtn" style="width: 100%;">إرسال التقييم
+                    للمراجعة</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="contact" id="contact">
+        <div class="contact-text">
+            <h2 class="cyber-text">تواصل <span>معنا</span></h2>
+            <p>تواصل معنا عبر النموذج أو من خلال أرقامنا وحساباتنا الرسمية.</p>
+            <p>📧 redtriangleteamrtt@gmail.com</p>
+            <p>📞 07750828279</p>
+            <div class="contact-icons">
+                <a href="#"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instagram.com/2azd0/" target="_blank"><i class="bx bxl-instagram"></i></a>
+                <a href="https://t.me/ll0_n" target="_blank"><i class="bx bxl-telegram"></i></a>
+            </div>
+        </div>
+
+        <form class="contact-form">
+            <input type="text" placeholder="الاسم الكامل" required>
+            <input type="email" placeholder="البريد الإلكتروني" required>
+            <textarea placeholder="رسالتك هنا..." rows="5" required></textarea>
+            <button type="submit" class="btn-box">إرسال الرسالة</button>
+        </form>
+    </section>
+
+
+    <div class="last-text">
+    </div>
+    <a href="https://wa.me/9647750828279?text=مرحباً فريق Red Triangle، لدي استفسار بخصوص خدماتكم."
+        class="floating-whatsapp" target="_blank">
+        <i class='bx bxl-whatsapp'></i>
+    </a>
+    <script src="js/anti-inspect.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/neural_network.js"></script>
+    <script src="js/cyber-text.js"></script>
+    <script src="js/team.js"></script>
+    <script src="js/reviews.js"></script>
+
+
+    <div id="cvModal" class="cv-modal">
+        <div class="cv-content dossier-layout">
+
+            <span class="close-cv">&times;</span>
+
+            <div class="dossier-sidebar">
+                <div class="profile-pic-wrapper">
+                    <img id="cvImage" src="" alt="Profile">
+                </div>
+                <h2 id="cvName">الاسم</h2>
+                <p id="cvRole" style="color: #a0a0a0; font-size: 14px; margin-bottom: 15px;">الدور</p>
+                <div id="cvTags" class="tags-container" style="justify-content: center;"></div>
+            </div>
+
+            <div class="dossier-main">
+                <div class="dossier-section">
+                    <h3><i class='bx bx-radar'></i> الملخص والخبرات</h3>
+                    <p id="cvExperience" class="dossier-text"></p>
+                </div>
+
+                <div class="dossier-section">
+                    <h3><i class='bx bx-code-block'></i> أبرز المشاريع</h3>
+                    <ul id="cvProjects" class="dossier-list"></ul>
+                </div>
+
+                <div class="dossier-section">
+                    <h3><i class='bx bx-certification'></i> الشهادات والإنجازات</h3>
+                    <ul id="cvCertificates" class="dossier-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cyberToast" class="cyber-toast">
+        <div class="toast-icon"><i class='bx bx-check-shield'></i></div>
+        <div class="toast-message" id="toastMessage">تمت العملية بنجاح!</div>
+    </div>
+</body>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <div class="footer-logo">
+                <i id="triangle-small" class='bx bxl-play-store'></i>
+                <span>المثلث الأحمر</span>
+            </div>
+            <p class="footer-about">
+                نحن فريق هندسي متكامل ندمج بين الذكاء الاصطناعي، برمجة النظم، والهندسة الكهربائية لنقدم حلولاً تقنية
+                وأكاديمية مبتكرة تسبق التوقعات.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4>خدماتنا</h4>
+            <ul class="footer-list">
+                <li><a href="#services">برمجة الويب وتطبيقات الهاتف</a></li>
+                <li><a href="#services">أنظمة الذكاء الاصطناعي والأمن</a></li>
+                <li><a href="#services">هندسة الأردوينو والأنظمة المدمجة</a></li>
+                <li><a href="#services">البحوث الأكاديمية والترجمة الطبية</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>روابط هامة</h4>
+            <ul class="footer-list">
+                <li><a href="pages/projects.html">أرشيف العمليات (Portfolio)</a></li>
+                <li><a href="pages/legal.html">الشروط والأحكام وسياسة الخصوصية</a></li>
+                <li><a href="#contact">طلب استشارة مجانية</a></li>
+                <li><a href="pages/blog.html">المدونة والمقالات</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="#"><i class='bx bxl-whatsapp'></i></a>
+                <a href="#"><i class='bx bxl-telegram'></i></a>
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+                <a href="#"><i class='bx bxl-github'></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 جميع الحقوق محفوظة لفريق <span class="cyber-text">المثلث الأحمر</span></p>
+        <p style="font-size: 10px; color: #555; margin-top: 5px;">تم التطوير بواسطة مهندسي الفريق</p>
+    </div>
+
+    <a href="#" class="back-to-top"><i class='bx bx-up-arrow-alt'></i></a>
+</footer>

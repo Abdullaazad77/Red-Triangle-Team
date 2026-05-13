@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقارنة Random Forest و XGBoost | المثلث الأحمر</title>
+    <link rel="icon" type="image/png" href="../pics/icon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body class="article-page">
+
+    <header class="header">
+        <a href="../index.html" style="text-decoration:none;"><i id="triangle" class='bx bxl-play-store'></i></a>
+        <a href="../index.html" style="color:#d4af37; text-decoration:none; font-weight:bold; font-size: 20px;">
+            العودة للرئيسية <i class='bx bx-arrow-back'></i>
+        </a>
+    </header>
+
+    <main class="article-container" style="padding-top: 120px; max-width: 800px; margin: 0 auto 50px; padding-left: 20px; padding-right: 20px;">
+        
+        <div class="article-header" style="text-align: center; margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 30px;">
+            <div class="blog-tags" style="justify-content: center; margin-bottom: 20px;">
+                <span style="font-size: 13px; background: rgba(212, 175, 55, 0.1); color: #d4af37; padding: 6px 15px; border-radius: 20px;">ذكاء اصطناعي</span>
+                <span style="font-size: 13px; background: rgba(212, 175, 55, 0.1); color: #d4af37; padding: 6px 15px; border-radius: 20px;">أمن سيبراني</span>
+            </div>
+            <h1 style="color: #fff; font-size: 28px; line-height: 1.5; margin-bottom: 20px;">مقارنة بين خوارزميات Random Forest و XGBoost في كشف التسلل (IDS)</h1>
+            <div class="article-meta" style="color: #888; font-size: 14px; display: flex; justify-content: center; gap: 20px;">
+                <span><i class='bx bx-calendar'></i> 10 مايو 2026</span>
+                <span><i class='bx bx-user'></i> بقلم: م. أزاد</span>
+                <span><i class='bx bx-time'></i> 4 دقائق قراءة</span>
+            </div>
+        </div>
+
+        <div class="article-body">
+            <p>مع تعقيد الهجمات السيبرانية الحديثة، لم تعد أنظمة كشف التسلل القائمة على التواقيع (Signature-based IDS) قادرة على رصد هجمات "اليوم الصفر" (Zero-Day Attacks) أو هجمات حجب الخدمة الموزعة (DDoS). هنا، يبرز دور كشف الشذوذ (Anomaly Detection) المعتمد على خوارزميات التعلم الآلي. في هذا المقال، نجري تحليلاً معمارياً وأدائياً لاثنتين من أبرز خوارزميات التعلم المجمع (Ensemble Learning) عند تطبيقها على حزم بيانات حديثة مثل <strong>CSE-CIC-IDS2018</strong>.</p>
+
+            <h2>1. هيكلية Random Forest (تقنية Bagging)</h2>
+            <p>تعمل خوارزمية الغابة العشوائية بناءً على مبدأ "التعبئة" (Bootstrap Aggregating). تقوم بإنشاء مجموعة ضخمة من أشجار القرار (Decision Trees) المستقلة، حيث تتدرب كل شجرة على عينة عشوائية من البيانات والسمات (Features). النتيجة النهائية تُتخذ بناءً على تصويت الأغلبية (Majority Voting).</p>
+            <ul>
+                <li><strong>التباين (Variance):</strong> تمتاز بقدرتها العالية على تقليل التباين ومنع مشكلة التجهيز الزائد (Overfitting)، مما يجعلها شديدة الاستقرار.</li>
+                <li><strong>التعامل مع التشوه (Noise):</strong> تُظهر مناعة ممتازة ضد البيانات المفقودة أو القيم المتطرفة (Outliers) في حزم بيانات الشبكة.</li>
+            </ul>
+
+            <h2>2. هيكلية XGBoost (تقنية Gradient Boosting)</h2>
+            <p>خوارزمية XGBoost (Extreme Gradient Boosting) تتبنى نهجاً متسلسلاً يعتمد على "التعزيز" (Boosting). بدلاً من بناء الأشجار بشكل مستقل، يتم بناء كل شجرة لتقليل الأخطاء (التي تُقاس بدالة الخسارة - Loss Function) الناتجة عن الشجرة التي سبقتها، باستخدام تقنية الانحدار التدريجي (Gradient Descent).</p>
+            <ul>
+                <li><strong>كفاءة التصنيف:</strong> تتفوق بشكل كاسح في التعامل مع البيانات غير المتوازنة (Imbalanced Data) – وهي حالة شائعة في الـ IDS حيث تكون حزم البيانات السليمة (Benign) أكثر بكثير من الحزم الخبيثة.</li>
+                <li><strong>تحسين الموارد:</strong> تدعم المعالجة المتوازية (Parallel Processing) وتقليم الأشجار التلقائي (Tree Pruning)، مما يقلل من وقت التدريب بشكل كبير مقارنة بالخوارزميات التقليدية.</li>
+            </ul>
+
+            <h2>الخلاصة المرجعية للمطورين</h2>
+            <p>عند بناء نظام IDS للمقترحات البحثية، إذا كان الهدف هو استخراج أهمية السمات (Feature Importance) وتقليل معدل الإيجابيات الكاذبة (False Positives) في بيئة كثيفة التشويش، فإن Random Forest تعد معياراً أساسياً. أما إذا كان الهدف هو تحقيق دقة رصد استثنائية (High Recall & Precision) وبناء نظام قادر على استيعاب تدرجات البيانات المعقدة بكفاءة حاسوبية عالية، فإن XGBoost تمثل الخيار المعماري الأمثل.</p>
+        </div>
+
+        <div class="article-cta" style="margin-top: 50px; background: #111; border-right: 4px solid #d4af37; padding: 25px; border-radius: 8px;">
+            <h3 style="color: #d4af37; margin-bottom: 10px;">هل تحتاج إلى تطبيق هذه الخوارزميات عملياً في مشروع تخرجك؟</h3>
+            <p style="color: #ccc; margin-bottom: 20px; font-size: 14px;">فريق "المثلث الأحمر" متخصص في بناء نماذج AI معالجة بالـ Python لمعالجة حزم (CSE-CIC-IDS2018). نقدم لك الكود المصدري كاملاً مع شرح رياضي وبرمجي يضمن تفوقك في المناقشة.</p>
+            <a href="order.html" class="btn-box" style="font-size: 15px; padding: 10px 25px;">اطلب برمجة مشروعك الآن</a>
+        </div>
+
+    </main>
+
+</body>
+</html>
