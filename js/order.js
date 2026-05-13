@@ -34,7 +34,7 @@ function validateAndNext(currentStep, nextStep) {
     if (isValid) {
         goToStep(nextStep);
     } else {
-        alert("يرجى ملء جميع الحقول المطلوبة واختيار نوع الخدمة قبل الانتقال.");
+        showNotification("يرجى ملء جميع الحقول المطلوبة واختيار نوع الخدمة قبل الانتقال.");
     }
 }
 
@@ -57,7 +57,7 @@ function applyDiscount() {
     const priceSpan = document.getElementById('priceValue');
 
     if (typeof SECRET_CONFIG === 'undefined') {
-        alert("إعدادات الخصم غير موجودة، تأكد من استدعاء ملف main.js");
+        showNotification("إعدادات الخصم غير موجودة، تأكد من استدعاء ملف main.js");
         return;
     }
 
@@ -147,7 +147,7 @@ document.getElementById('orderForm').addEventListener('submit', async function (
 
     if (file) {
         if (file.size > 10 * 1024 * 1024) { // 10 ميجابايت
-            alert("الملف كبير جداً! الحد الأقصى هو 10 ميجابايت.");
+            showNotification("الملف كبير جداً! الحد الأقصى هو 10 ميجابايت.");
             document.getElementById('loading').style.display = 'none';
             if (submitBtn) submitBtn.style.display = 'block';
             return; // إيقاف الإرسال
@@ -204,10 +204,10 @@ document.getElementById('orderForm').addEventListener('submit', async function (
         body: JSON.stringify(data)
     }).then(response => response.json())
         .then(res => {
-            alert("تم استلام طلبك والملفات بنجاح! سنتواصل معك قريباً لتأكيد التفاصيل.");
+            showNotification("تم استلام طلبك والملفات بنجاح! سنتواصل معك قريباً لتأكيد التفاصيل.");
             window.location.reload();
         }).catch(err => {
-            alert("حدث خطأ أثناء الاتصال بالخادم، يرجى المحاولة لاحقاً.");
+            showNotification("حدث خطأ أثناء الاتصال بالخادم، يرجى المحاولة لاحقاً.");
             document.getElementById('loading').style.display = 'none';
             if (submitBtn) submitBtn.style.display = 'block';
         });

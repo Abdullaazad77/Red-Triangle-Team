@@ -21,6 +21,8 @@
 
     <canvas id="particles-canvas"></canvas>
 
+    
+
     <div class="container-form" style="margin-top: 150px; position: relative; z-index: 10;">
         <h2>نموذج طلب <span>بحث أكاديمي</span></h2>
 
@@ -58,7 +60,7 @@
                 </div>
                 <div class="form-group">
                     <label>رقم الهاتف (واتساب/تليجرام)</label>
-                    <input type="tel" id="phone" value="07750828279" required>
+                    <input type="tel" id="phone" required placeholder="07***********">
                 </div>
                 <div class="form-group">
                     <label>الجامعة والقسم</label>
@@ -149,8 +151,13 @@
 
     <script src="../js/anti-inspect.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/particles.js"></script>
+    <script src="../js/parallax_starfield.js"></script>
     <script src="../js/order.js"></script>
+
+    <div id="cyberToast" class="cyber-toast">
+        <div class="toast-icon"><i class='bx bx-check-shield'></i></div>
+        <div class="toast-message" id="toastMessage">تمت العملية بنجاح!</div>
+    </div>
 
 </body>
 

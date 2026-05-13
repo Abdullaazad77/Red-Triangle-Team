@@ -1,7 +1,40 @@
+
+// دالة إظهار الإشعارات الاحترافية
+// دالة إظهار الإشعارات الاحترافية (محدثة)
+function showNotification(message, isSuccess = true) {
+    const toast = document.getElementById('cyberToast');
+    const msgElement = document.getElementById('toastMessage');
+    const icon = toast.querySelector('.toast-icon i');
+
+    // تغيير النص
+    msgElement.innerText = message;
+
+    // تغيير الشكل بناءً على هوية المثلث الأحمر
+    if (isSuccess) {
+        toast.style.borderColor = '#d4af37'; /* اللون الذهبي للنجاح */
+        toast.style.boxShadow = '0 5px 20px rgba(212, 175, 55, 0.2)';
+        icon.className = 'bx bx-check-shield';
+        icon.style.color = '#d4af37';
+    } else {
+        toast.style.borderColor = '#ff0000'; /* اللون الأحمر للخطأ */
+        toast.style.boxShadow = '0 5px 20px rgba(255, 0, 0, 0.2)';
+        icon.className = 'bx bx-error-circle';
+        icon.style.color = '#ff0000';
+    }
+
+    // إظهار الإشعار
+    toast.classList.add('show');
+
+    // إخفاء الإشعار تلقائياً بعد 2.5 ثانية (بدلاً من 3.5)
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2500);
+}
+
 // دالة إظهار رسالة "قريباً"
 function comingSoon(e) {
     e.preventDefault();
-    alert("هذه الخدمة سوف تتاح قريباً، جاري العمل عليها حالياً.\nيمكنك التواصل مع الفريق للطلب المباشر عبر الواتساب أو التليجرام.");
+    showNotification("هذه الخدمة سوف تتاح قريباً، جاري العمل عليها حالياً.\nيمكنك التواصل مع الفريق للطلب المباشر عبر الواتساب أو التليجرام.");
 }
 // مصفوفة لتخزين ضغطات المفاتيح
 let keySequence = [];
@@ -23,7 +56,7 @@ let inputBuffer = "";
 // دالة إظهار رسالة "قريباً" للأزرار العادية
 function comingSoon(e) {
     e.preventDefault();
-    alert("هذه الخدمة سوف تتاح قريباً، جاري العمل عليها حالياً.\nيمكنك التواصل مع الفريق للطلب المباشر عبر الواتساب أو التليجرام.");
+    showNotification("هذه الخدمة سوف تتاح قريباً، جاري العمل عليها حالياً.\nيمكنك التواصل مع الفريق للطلب المباشر عبر الواتساب أو التليجرام.");
 }
 
 // مراقبة ضغطات المفاتيح في الصفحة
@@ -365,3 +398,28 @@ function triggerEasterEgg(level) {
         setTimeout(() => overlay.remove(), 800);
     }, duration);
 }
+
+// الانتظار حتى تكتمل تحميل كافة عناصر الصفحة
+window.addEventListener('load', function () {
+
+    // استخدمنا setTimeout هنا فقط لمحاكاة وقت التحميل (مثلاً ثانيتين) 
+    // إذا كنت تجلب بيانات من Google Sheets، يمكنك وضع هذه الأسطر داخل دالة الـ fetch بدلاً من setTimeout
+    setTimeout(() => {
+        const skeleton = document.getElementById('skeleton-container');
+        const realContent = document.getElementById('real-content');
+
+        if (skeleton && realContent) {
+            skeleton.style.display = 'none'; // إخفاء الهيكل
+
+            // إظهار المحتوى الحقيقي (إذا كان شبكة نستخدم grid، وإذا كان نصاً نستخدم block)
+            realContent.style.display = 'grid'; // أو 'block' حسب تصميمك
+
+            // إضافة حركة ظهور خفيفة للمحتوى الحقيقي (اختياري لجمالية أكثر)
+            realContent.style.opacity = '0';
+            setTimeout(() => {
+                realContent.style.transition = 'opacity 0.5s ease';
+                realContent.style.opacity = '1';
+            }, 50);
+        }
+    }, 2000); // 2000 ملي ثانية = ثانيتين
+});
