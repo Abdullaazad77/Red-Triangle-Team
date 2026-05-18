@@ -1,7 +1,7 @@
 /* =========================================
    نظام التعليقات والتصويت المرتبط بـ Google Sheets
    ========================================= */
-const REVIEWS_API = "https://script.google.com/macros/s/AKfycbz8tn9H1gFcPLwCkcCJQvI-wjRUw_tfYq-yyDwOA41t3J8Yl26041_p0nBi8pio3Bi8lQ/exec";
+const REVIEWS_API = "https://script.google.com/macros/s/AKfycbxB41oQvAQvJaWU4CiQf0yWgZGpxIcCYqlwTRwm_sQZnE6f1gzybJy54bjWva70ItjQ_g/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
     loadReviews();
