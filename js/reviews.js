@@ -9,6 +9,22 @@ document.addEventListener("DOMContentLoaded", () => {
     setupModal();
 });
 
+// دالة لتعقيم النصوص ومنع تشغيل الأكواد الخبيثة
+function escapeHTML(str) {
+    return str.replace(/[&<>'"]/g,
+        tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        }[tag])
+    );
+}
+
+// مثال على الاستخدام قبل طباعة التعليق:
+// بدلاً من: const safeReview = data.review;
+// استخدم: const safeReview = escapeHTML(data.review);
 // 1. جلب التعليقات وفرزها
 async function loadReviews() {
     const wrapper = document.getElementById("reviewsWrapper");
@@ -31,6 +47,10 @@ async function loadReviews() {
         }
 
         reviews.forEach(rev => {
+            const safeName = escapeHTML(rev.name);
+            const safeRole = escapeHTML(rev.role);
+            const safeText = escapeHTML(rev.text);
+
             // توليد النجوم
             let starsHtml = "";
             for (let i = 0; i < 5; i++) {
@@ -38,22 +58,24 @@ async function loadReviews() {
                 else starsHtml += "<i class='bx bx-star'></i>";
             }
 
-            // أخذ أول حرفين من الاسم للأيقونة
-            let shortName = rev.name.substring(0, 2).toUpperCase();
+            // أخذ أول حرفين من الاسم المُعقم للأيقونة
+            let shortName = safeName.substring(0, 2).toUpperCase();
 
             // إنشاء بطاقة التعليق
             const card = document.createElement("div");
             card.className = "review-card";
+
+            // ---> لاحظ أننا نستخدم المتغيرات المعقمة (safeName, safeRole, safeText) هنا <---
             card.innerHTML = `
                 <i class='bx bxs-quote-right' style="font-size: 35px; color: rgba(212, 175, 55, 0.15); margin-bottom: 10px;"></i>
                 <div class="stars" style="color: #d4af37; margin-bottom: 10px; font-size: 18px;">${starsHtml}</div>
-                <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px; font-size: 14px; flex-grow: 1;">"${rev.text}"</p>
+                <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px; font-size: 14px; flex-grow: 1;">"${safeText}"</p>
                 
                 <div class="client-info" style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
                     <div style="width: 45px; height: 45px; border-radius: 50%; background: #111; display: flex; justify-content: center; align-items: center; font-weight: bold; color: #d4af37; border: 1px solid #d4af37;">${shortName}</div>
                     <div>
-                        <h4 style="color: #fff; font-size: 15px; margin-bottom: 3px;">${rev.name}</h4>
-                        <span style="color: #888; font-size: 11px;">${rev.role}</span>
+                        <h4 style="color: #fff; font-size: 15px; margin-bottom: 3px;">${safeName}</h4>
+                        <span style="color: #888; font-size: 11px;">${safeRole}</span>
                     </div>
                 </div>
 
@@ -68,6 +90,7 @@ async function loadReviews() {
             `;
             wrapper.appendChild(card);
         });
+
 
     } catch (error) {
         wrapper.innerHTML = "<p style='text-align:center; color:#ff0000; width:100%;'>حدث خطأ في تحميل التقييمات. يرجى المحاولة لاحقاً.</p>";
@@ -100,9 +123,19 @@ function handleVote(id, type, btnElement) {
 // 3. إضافة تقييم جديد
 document.getElementById("addReviewForm").addEventListener("submit", function (e) {
     e.preventDefault();
+
+    // ---> فحص فخ الروبوتات (Honeypot) <---
+    const botCatcher = document.getElementById("bot_catcher").value;
+    if (botCatcher !== "") {
+        console.log("تم اكتشاف روبوت! إيقاف الإرسال.");
+        return; // الخروج فوراً دون إرسال البيانات
+    }
+
     const submitBtn = document.getElementById("submitRevBtn");
     submitBtn.innerText = "جاري الإرسال...";
     submitBtn.disabled = true;
+
+    // استكمال باقي الكود كما هو...
 
     const data = {
         action: "add_review",
