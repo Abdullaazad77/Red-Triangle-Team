@@ -1,0 +1,29 @@
+/* Additions are scoped to the new forms; the original theme stays in style.css. */
+.service-order-page .container-form { position: relative; z-index: 10; margin-top: 150px; }
+.service-order-page h1 { text-align: center; font-size: 36px; margin-bottom: 15px; }
+.service-order-page h1 span { color: var(--primary-gold); }
+.service-order-page .order-intro { text-align: center; color: var(--text-muted); line-height: 1.8; margin-bottom: 25px; }
+.service-order-page .quote-note { border: 1px solid var(--primary-gold); border-radius: 15px; padding: 20px; margin-bottom: 30px; text-align: center; line-height: 1.8; }
+.service-order-page .quote-note strong { color: var(--primary-gold); display: block; }
+.service-order-page .form-step h2 { font-size: 22px; text-align: right; color: var(--primary-gold); margin-bottom: 25px; }
+.service-order-page .step-buttons > * { flex: 1; text-align: center; }
+.service-order-page .form-group textarea { resize: vertical; min-height: 120px; }
+.service-order-page .form-group small { display: block; color: var(--text-muted); margin-top: 8px; line-height: 1.6; }
+.service-order-page .request-summary { margin-bottom: 25px; line-height: 1.8; }
+.service-order-page .request-summary dt { color: var(--primary-gold); font-weight: 700; margin-top: 12px; }
+.service-order-page .request-summary dd { margin: 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+.service-order-page .order-help { color: var(--text-muted); line-height: 1.8; margin-top: 20px; }
+.service-order-page .order-help a { color: var(--primary-gold); }
+.service-order-page #requestStatus { margin-top: 20px; line-height: 1.8; }
+.service-order-page #whatsappRequest { margin-top: 15px; text-align: center; }
+.service-order-page [hidden] { display: none !important; }
+.service-order-page :is(a, button, input, select, textarea):focus-visible { outline: 2px solid var(--primary-gold); outline-offset: 4px; }
+@media (max-width: 768px) {
+    .service-order-page h1 { font-size: 28px; }
+    .service-order-page .step-buttons { flex-direction: column; }
+    .service-order-page .step-buttons > * { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .service-order-page *, .service-order-page *::before, .service-order-page *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .service-order-page #particles-canvas { display: none; }
+}
