@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب مشروع إلكتروني | المثلث الأحمر</title>
+    <meta name="description" content="صف فكرة مشروعك والمكونات المتوفرة لديك لنحدّد متطلبات التصميم والتنفيذ.">
+    <link rel="icon" type="image/png" href="../pics/icon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/service-order.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="../js/service-order.js" defer></script>
+</head>
+<body class="service-order-page">
+    <header class="header">
+        <a href="../index.html" aria-label="المثلث الأحمر — الرئيسية"><i id="triangle" class="bx bxl-play-store" aria-hidden="true"></i></a>
+        <a class="btn-box btn-outline" href="../index.html">العودة للرئيسية <i class="bx bx-arrow-back" aria-hidden="true"></i></a>
+    </header>
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+    <main class="container-form">
+        <h1>نموذج طلب <span>مشروع إلكتروني</span></h1>
+        <p class="order-intro">صف فكرة مشروعك والمكونات المتوفرة لديك لنحدّد متطلبات التصميم والتنفيذ. الحقول المعلّمة بـ * مطلوبة.</p>
+        <div class="progress-container" aria-label="مراحل الطلب">
+            <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+            <span class="progress-step active" aria-current="step" aria-label="1: بيانات العميل">1</span>
+            <span class="progress-step" aria-label="2: تفاصيل المشروع">2</span>
+            <span class="progress-step" aria-label="3: المراجعة والتواصل">3</span>
+        </div>
+        <aside class="quote-note"><strong>السعر بعد مراجعة المتطلبات</strong>تختلف التكلفة ومدة التنفيذ بحسب حجم المشروع. يراجع الفريق التفاصيل معك قبل الاتفاق.</aside>
+        <noscript><p class="order-help">يحتاج النموذج إلى JavaScript. يمكنك التواصل مباشرة عبر <a href="https://wa.me/9647750828279">واتساب الفريق</a>.</p></noscript>
+        <form id="serviceOrderForm" data-service="طلب مشروع إلكتروني">
+            <section class="form-step active-step" aria-labelledby="clientHeading">
+                <h2 id="clientHeading" tabindex="-1">الخطوة 1: بيانات العميل</h2>
+                <div class="form-group"><label for="clientName">الاسم الكامل <span aria-hidden="true">*</span></label><input type="text" id="clientName" name="clientName" data-label="الاسم الكامل" autocomplete="name" required maxlength="150" placeholder="اسمك الكامل"></div>
+                <div class="form-group"><label for="phone">رقم الهاتف <span aria-hidden="true">*</span></label><input type="tel" id="phone" name="phone" data-label="رقم الهاتف" autocomplete="tel" dir="ltr" pattern="[+0-9٠-٩۰-۹ .\-]{7,25}" required placeholder="07xxxxxxxxx أو رقم دولي"></div>
+                <div class="form-group"><label for="organization">اسم الشركة أو الجهة (اختياري)</label><input type="text" id="organization" name="organization" data-label="اسم الشركة أو الجهة" maxlength="150" placeholder="اسم الجهة إن وجدت"></div>
+                <div class="step-buttons"><button type="button" class="btn-box" data-next>التالي: تفاصيل المشروع</button></div>
+            </section>
+            <section class="form-step" hidden aria-labelledby="detailsHeading">
+                <h2 id="detailsHeading" tabindex="-1">الخطوة 2: تفاصيل المشروع</h2>
+<div class="form-group"><label for="projectName">ما اسم المشروع وما وظيفته الأساسية؟ <span aria-hidden="true">*</span></label><input type="text" id="projectName" name="projectName" data-label="ما اسم المشروع وما وظيفته الأساسية؟" maxlength="200" placeholder="مثال: نظام ري يعمل حسب رطوبة التربة" required></div>
+
+                <div class="form-group"><label for="projectType">ما نوع المشروع أو المنصة الإلكترونية المطلوبة؟ <span aria-hidden="true">*</span></label><select id="projectType" name="projectType" data-label="ما نوع المشروع أو المنصة الإلكترونية المطلوبة؟" required><option value="">اختر نوع المشروع</option><option>Arduino</option><option>ESP32 أو ESP8266 / إنترنت الأشياء</option><option>أنظمة تحكم وحساسات</option><option>تصميم دوائر إلكترونية</option><option>روبوتات</option><option>أخرى</option></select></div>
+<div class="form-group"><label for="deliverable">ما العمل المطلوب من الفريق؟ <span aria-hidden="true">*</span></label><select id="deliverable" name="deliverable" data-label="ما العمل المطلوب من الفريق؟" required><option value="">اختر الخدمة المطلوبة</option><option>تصميم وبرمجة وتنفيذ كامل</option><option>برمجة فقط</option><option>تصميم دائرة وتحديد المكونات</option><option>تطوير أو إصلاح مشروع موجود</option><option>استشارة تقنية</option></select></div>
+<div class="form-group"><label for="components">هل المكونات الإلكترونية متوفرة لديك؟ <span aria-hidden="true">*</span></label><select id="components" name="components" data-label="هل المكونات الإلكترونية متوفرة لديك؟" required><option value="">اختر توفر المكونات</option><option>لا توجد مكونات وأحتاج إلى توفيرها</option><option>لدي بعض المكونات</option><option>جميع المكونات متوفرة</option></select></div>
+<div class="form-group"><label for="delivery">ما الذي تريد استلامه عند اكتمال المشروع؟ <span aria-hidden="true">*</span></label><select id="delivery" name="delivery" data-label="ما الذي تريد استلامه عند اكتمال المشروع؟" required><option value="">اختر طريقة التسليم المطلوبة</option><option>ملفات الكود والمخططات فقط</option><option>نموذج عملي مع الكود والمخططات</option><option>أحددها مع الفريق</option></select></div><div class="form-group"><label for="availableParts">ما أسماء المكونات المتوفرة أو المطلوبة؟ (اختياري)</label><input type="text" id="availableParts" name="availableParts" data-label="ما أسماء المكونات المتوفرة أو المطلوبة؟" maxlength="200" placeholder="مثال: ESP32، حساس رطوبة، مضخة 12V؛ أو أحتاج إلى اقتراح"></div>
+<div class="form-group"><label for="powerSupply">ما مصدر الطاقة أو جهد التشغيل المطلوب؟ (اختياري)</label><select id="powerSupply" name="powerSupply" data-label="ما مصدر الطاقة أو جهد التشغيل المطلوب؟"><option value="">اختر إجابتك</option><option>USB أو 5V</option><option>بطارية</option><option>مزود 12V أو 24V</option><option>مصدر آخر — أوضحه في التفاصيل</option><option>أحتاج إلى تحديده مع الفريق</option></select></div>
+<div class="form-group"><label for="connectivity">هل يحتاج المشروع إلى اتصال أو تحكم عن بُعد؟ <span aria-hidden="true">*</span></label><select id="connectivity" name="connectivity" data-label="هل يحتاج المشروع إلى اتصال أو تحكم عن بُعد؟" required><option value="">اختر إجابتك</option><option>لا يحتاج إلى اتصال</option><option>Wi-Fi أو إنترنت</option><option>Bluetooth</option><option>GSM أو شبكة الهاتف</option><option>نوع آخر — أوضحه في التفاصيل</option><option>أحتاج إلى استشارة</option></select></div>
+<div class="form-group"><label for="deliveryCity">في أي مدينة تريد استلام النموذج العملي؟ (اختياري)</label><input type="text" id="deliveryCity" name="deliveryCity" data-label="في أي مدينة تريد استلام النموذج العملي؟" maxlength="200" placeholder="اكتب المدينة إذا كنت تحتاج إلى تسليم جهاز فعلي"></div>
+<div class="form-group"><label for="requirements">كيف يجب أن يعمل المشروع وما المواصفات المطلوبة؟ <span aria-hidden="true">*</span></label><textarea id="requirements" name="requirements" data-label="كيف يجب أن يعمل المشروع وما المواصفات المطلوبة؟" rows="5" maxlength="1500" placeholder="اذكر وظيفة المشروع والحساسات والمحركات والاتصال ومصدر الطاقة وأي قيود للحجم أو بيئة التشغيل. لا ترسل بيانات سرية." required></textarea></div>
+                <div class="form-group"><label for="budget">الميزانية التقريبية (اختياري)</label><input type="text" id="budget" name="budget" data-label="الميزانية التقريبية" maxlength="150" placeholder="مثال: 500 ألف دينار، أو تُحدد بعد الاستشارة"></div>
+                <div class="form-group"><label for="deadline">موعد التسليم المفضّل (اختياري)</label><input type="date" id="deadline" name="deadline" data-label="موعد التسليم المفضّل" placeholder=""></div>
+                <p class="order-help">الموعد المطلوب مبدئي، وتُؤكَّد إمكانية تنفيذه بعد مراجعة الفريق.</p>
+                <div class="step-buttons"><button type="button" class="btn-box btn-outline" data-back>السابق</button><button type="button" class="btn-box" data-next>التالي: مراجعة الطلب</button></div>
+            </section>
+            <section class="form-step" hidden aria-labelledby="reviewHeading">
+                <h2 id="reviewHeading" tabindex="-1">الخطوة 3: المراجعة والتواصل</h2>
+                <dl id="requestSummary" class="request-summary"></dl>
+                <p class="order-help">راجع بياناتك، ثم جهّز رسالة الطلب لفتحها في واتساب. يمكنك مشاركة الملفات المرجعية لاحقًا في المحادثة. لا يُحفظ الطلب في الموقع ولا يُرسل تلقائيًا.</p>
+                <p class="order-help">تُشارك البيانات التي أدخلتها مع الفريق عبر واتساب عند إرسال الرسالة. <a href="legal.html">اطّلع على الشروط وسياسة الخصوصية</a>.</p>
+                <div class="step-buttons"><button type="button" class="btn-box btn-outline" data-back>تعديل التفاصيل</button><button type="submit" class="submit-btn">تجهيز رسالة الطلب</button></div>
+                <p id="requestStatus" role="status" aria-live="polite"></p>
+                <a id="whatsappRequest" class="btn-box" target="_blank" rel="noopener noreferrer" hidden>فتح واتساب لإرسال الطلب <i class="bx bxl-whatsapp" aria-hidden="true"></i></a>
+            </section>
+        </form>
+    </main>
+    <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { const script = document.createElement('script'); script.src = '../js/parallax_starfield.js'; document.body.appendChild(script); }</script>
+</body>
+</html>

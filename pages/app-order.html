@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب تطبيق | المثلث الأحمر</title>
+    <meta name="description" content="أخبرنا عن فكرة التطبيق والمنصات التي تريد دعمها لنراجع المتطلبات معك.">
+    <link rel="icon" type="image/png" href="../pics/icon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/service-order.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="../js/service-order.js" defer></script>
+</head>
+<body class="service-order-page">
+    <header class="header">
+        <a href="../index.html" aria-label="المثلث الأحمر — الرئيسية"><i id="triangle" class="bx bxl-play-store" aria-hidden="true"></i></a>
+        <a class="btn-box btn-outline" href="../index.html">العودة للرئيسية <i class="bx bx-arrow-back" aria-hidden="true"></i></a>
+    </header>
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+    <main class="container-form">
+        <h1>نموذج طلب <span>تطبيق</span></h1>
+        <p class="order-intro">أخبرنا عن فكرة التطبيق والمنصات التي تريد دعمها لنراجع المتطلبات معك. الحقول المعلّمة بـ * مطلوبة.</p>
+        <div class="progress-container" aria-label="مراحل الطلب">
+            <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+            <span class="progress-step active" aria-current="step" aria-label="1: بيانات العميل">1</span>
+            <span class="progress-step" aria-label="2: تفاصيل المشروع">2</span>
+            <span class="progress-step" aria-label="3: المراجعة والتواصل">3</span>
+        </div>
+        <aside class="quote-note"><strong>السعر بعد مراجعة المتطلبات</strong>تختلف التكلفة ومدة التنفيذ بحسب حجم المشروع. يراجع الفريق التفاصيل معك قبل الاتفاق.</aside>
+        <noscript><p class="order-help">يحتاج النموذج إلى JavaScript. يمكنك التواصل مباشرة عبر <a href="https://wa.me/9647750828279">واتساب الفريق</a>.</p></noscript>
+        <form id="serviceOrderForm" data-service="طلب تطبيق">
+            <section class="form-step active-step" aria-labelledby="clientHeading">
+                <h2 id="clientHeading" tabindex="-1">الخطوة 1: بيانات العميل</h2>
+                <div class="form-group"><label for="clientName">الاسم الكامل <span aria-hidden="true">*</span></label><input type="text" id="clientName" name="clientName" data-label="الاسم الكامل" autocomplete="name" required maxlength="150" placeholder="اسمك الكامل"></div>
+                <div class="form-group"><label for="phone">رقم الهاتف <span aria-hidden="true">*</span></label><input type="tel" id="phone" name="phone" data-label="رقم الهاتف" autocomplete="tel" dir="ltr" pattern="[+0-9٠-٩۰-۹ .\-]{7,25}" required placeholder="07xxxxxxxxx أو رقم دولي"></div>
+                <div class="form-group"><label for="organization">اسم الشركة أو الجهة (اختياري)</label><input type="text" id="organization" name="organization" data-label="اسم الشركة أو الجهة" maxlength="150" placeholder="اسم الجهة إن وجدت"></div>
+                <div class="step-buttons"><button type="button" class="btn-box" data-next>التالي: تفاصيل المشروع</button></div>
+            </section>
+            <section class="form-step" hidden aria-labelledby="detailsHeading">
+                <h2 id="detailsHeading" tabindex="-1">الخطوة 2: تفاصيل المشروع</h2>
+<div class="form-group"><label for="projectName">ما اسم التطبيق أو فكرته الأساسية؟ <span aria-hidden="true">*</span></label><input type="text" id="projectName" name="projectName" data-label="ما اسم التطبيق أو فكرته الأساسية؟" maxlength="200" placeholder="مثال: تطبيق لحجز مواعيد العيادات" required></div>
+
+                <div class="form-group"><label for="platform">على أي منصات سيعمل التطبيق؟ <span aria-hidden="true">*</span></label><select id="platform" name="platform" data-label="على أي منصات سيعمل التطبيق؟" required><option value="">اختر المنصة المطلوبة</option><option>Android</option><option>iOS</option><option>Android و iOS</option><option>أحتاج إلى استشارة</option></select></div>
+<div class="form-group"><label for="appType">ما مجال التطبيق؟ <span aria-hidden="true">*</span></label><select id="appType" name="appType" data-label="ما مجال التطبيق؟" required><option value="">اختر نوع التطبيق</option><option>متجر أو توصيل</option><option>حجز ومواعيد</option><option>تعليمي</option><option>خدمات أو إدارة أعمال</option><option>شبكة اجتماعية</option><option>أخرى</option></select></div>
+<div class="form-group"><label for="designStatus">هل لديك تصميم أو تطبيق قائم؟ <span aria-hidden="true">*</span></label><select id="designStatus" name="designStatus" data-label="هل لديك تصميم أو تطبيق قائم؟" required><option value="">اختر حالة التصميم</option><option>أحتاج إلى تصميم واجهات وبرمجة</option><option>لدي تصميم جاهز</option><option>لدي تطبيق وأحتاج إلى تطويره</option></select></div>
+<div class="form-group"><label for="backend">هل تحتاج إلى خادم ولوحة إدارة؟ <span aria-hidden="true">*</span></label><select id="backend" name="backend" data-label="هل تحتاج إلى خادم ولوحة إدارة؟" required><option value="">اختر الخادم ولوحة الإدارة</option><option>أحتاج إلى خادم ولوحة إدارة</option><option>لدي خادم أو API جاهز</option><option>لا أحتاج إلى خادم</option><option>أحتاج إلى استشارة</option></select></div><div class="form-group"><label for="userRoles">من سيستخدم التطبيق؟ <span aria-hidden="true">*</span></label><input type="text" id="userRoles" name="userRoles" data-label="من سيستخدم التطبيق؟" maxlength="200" placeholder="مثال: العملاء، مقدمو الخدمة، ومدير النظام" required></div>
+<div class="form-group"><label for="appLanguage">ما اللغات المطلوبة للتطبيق؟ <span aria-hidden="true">*</span></label><select id="appLanguage" name="appLanguage" data-label="ما اللغات المطلوبة للتطبيق؟" required><option value="">اختر إجابتك</option><option>العربية</option><option>الإنجليزية</option><option>العربية والإنجليزية</option><option>لغات أخرى</option></select></div>
+<div class="form-group"><label for="integrations">هل يحتاج التطبيق إلى ربط بخدمات أخرى؟ (اختياري)</label><input type="text" id="integrations" name="integrations" data-label="هل يحتاج التطبيق إلى ربط بخدمات أخرى؟" maxlength="200" placeholder="مثال: دفع إلكتروني، خرائط، رسائل SMS أو نظام موجود"></div>
+<div class="form-group"><label for="publishing">هل تحتاج إلى نشر التطبيق على المتاجر؟ (اختياري)</label><select id="publishing" name="publishing" data-label="هل تحتاج إلى نشر التطبيق على المتاجر؟"><option value="">اختر إجابتك</option><option>نعم، وأحتاج إلى المساعدة في حسابات النشر</option><option>نعم، ولدي حسابات نشر</option><option>لا، للاستخدام الداخلي أو التسليم فقط</option><option>أحتاج إلى استشارة</option></select></div>
+<div class="form-group"><label for="requirements">كيف سيستخدم العميل التطبيق وما الميزات الأساسية؟ <span aria-hidden="true">*</span></label><textarea id="requirements" name="requirements" data-label="كيف سيستخدم العميل التطبيق وما الميزات الأساسية؟" rows="5" maxlength="1500" placeholder="صف رحلة المستخدم والميزات الأساسية مثل الحسابات، الإشعارات، الخرائط، الدفع أو العمل دون إنترنت." required></textarea></div>
+                <div class="form-group"><label for="budget">الميزانية التقريبية (اختياري)</label><input type="text" id="budget" name="budget" data-label="الميزانية التقريبية" maxlength="150" placeholder="مثال: 500 ألف دينار، أو تُحدد بعد الاستشارة"></div>
+                <div class="form-group"><label for="deadline">موعد التسليم المفضّل (اختياري)</label><input type="date" id="deadline" name="deadline" data-label="موعد التسليم المفضّل" placeholder=""></div>
+                <p class="order-help">الموعد المطلوب مبدئي، وتُؤكَّد إمكانية تنفيذه بعد مراجعة الفريق.</p>
+                <div class="step-buttons"><button type="button" class="btn-box btn-outline" data-back>السابق</button><button type="button" class="btn-box" data-next>التالي: مراجعة الطلب</button></div>
+            </section>
+            <section class="form-step" hidden aria-labelledby="reviewHeading">
+                <h2 id="reviewHeading" tabindex="-1">الخطوة 3: المراجعة والتواصل</h2>
+                <dl id="requestSummary" class="request-summary"></dl>
+                <p class="order-help">راجع بياناتك، ثم جهّز رسالة الطلب لفتحها في واتساب. يمكنك مشاركة الملفات المرجعية لاحقًا في المحادثة. لا يُحفظ الطلب في الموقع ولا يُرسل تلقائيًا.</p>
+                <p class="order-help">تُشارك البيانات التي أدخلتها مع الفريق عبر واتساب عند إرسال الرسالة. <a href="legal.html">اطّلع على الشروط وسياسة الخصوصية</a>.</p>
+                <div class="step-buttons"><button type="button" class="btn-box btn-outline" data-back>تعديل التفاصيل</button><button type="submit" class="submit-btn">تجهيز رسالة الطلب</button></div>
+                <p id="requestStatus" role="status" aria-live="polite"></p>
+                <a id="whatsappRequest" class="btn-box" target="_blank" rel="noopener noreferrer" hidden>فتح واتساب لإرسال الطلب <i class="bx bxl-whatsapp" aria-hidden="true"></i></a>
+            </section>
+        </form>
+    </main>
+    <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { const script = document.createElement('script'); script.src = '../js/parallax_starfield.js'; document.body.appendChild(script); }</script>
+</body>
+</html>

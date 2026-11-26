@@ -3,21 +3,21 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4YWSR5JXH2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YWSR5JXH2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-4YWSR5JXH2');
-</script>
+        gtag('config', 'G-4YWSR5JXH2');
+    </script>
     <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wu3vs44x23");
-</script>
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "wu3vs44x23");
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>طلب بحث تخرج - Red Triangle</title>
@@ -37,7 +37,7 @@
 
     <canvas id="particles-canvas"></canvas>
 
-    
+
 
     <div class="container-form" style="margin-top: 150px; position: relative; z-index: 10;">
         <h2>نموذج طلب <span>بحث أكاديمي</span></h2>
@@ -71,18 +71,18 @@
             <div class="form-step active-step" id="step1">
                 <h3 style="color:#d4af37; margin-bottom: 20px;">الخطوة 1: المعلومات الأساسية</h3>
                 <div class="form-group">
-                    <label>الاسم الكامل</label>
+                    <label for="clientName">الاسم الكامل</label>
                     <input type="text" id="clientName" required placeholder="يرجى إدخال اسمك الثلاثي">
                 </div>
                 <div class="form-group">
-                    <label>رقم الهاتف (واتساب/تليجرام)</label>
+                    <label for="phone">رقم الهاتف (واتساب/تليجرام)</label>
                     <input type="tel" id="phone" required placeholder="07***********">
                 </div>
                 <div class="form-group">
-                    <label>الجامعة والقسم</label>
-                    <input type="text" id="university" required placeholder="مثال: جامعة كركوك - هندسة حاسبات">
+                    <label for="university">ما اسم الجامعة والقسم أو التخصص؟</label>
+                    <input type="text" id="university" required placeholder="مثال: جامعة كركوك — هندسة الحاسبات">
                 </div>
-                <div class="step-buttons">
+<div class="step-buttons">
                     <button type="button" class="btn-box" style="width: 100%;" onclick="validateAndNext(1, 2)">
                         التالي: تفاصيل البحث <i class='bx bx-left-arrow-alt'></i>
                     </button>
@@ -93,7 +93,7 @@
                 <h3 style="color:#d4af37; margin-bottom: 20px;">الخطوة 2: تفاصيل البحث</h3>
 
                 <div class="form-group" style="margin-top: 20px;">
-                    <label>إرفاق ملفات (المصادر، شعار الجامعة، أو التعليمات)</label>
+                    <label for="projectFile">إرفاق ملفات (المصادر، شعار الجامعة، أو التعليمات)</label>
                     <div class="file-upload-wrapper"
                         style="position: relative; background: rgba(255,255,255,0.05); border: 2px dashed #444; padding: 20px; border-radius: 10px; text-align: center; cursor: pointer; transition: 0.3s;">
                         <input type="file" id="projectFile"
@@ -109,11 +109,11 @@
                         DOCX, ZIP, Images)</p>
                 </div>
                 <div class="form-group">
-                    <label>عنوان البحث</label>
+                    <label for="researchTitle">ما عنوان البحث أو موضوعه المقترح؟</label>
                     <input type="text" id="researchTitle" required placeholder="العنوان المقترح للبحث">
                 </div>
                 <div class="form-group">
-                    <label>نوع الخدمة</label>
+                    <label for="serviceType">ما نوع المساعدة المطلوبة في البحث؟</label>
                     <select id="serviceType" required>
                         <option value="" disabled selected>-- يرجى اختيار نوع الخدمة --</option>
                         <option value="40000">كتابة بحث كامل (40 ألف)</option>
@@ -122,10 +122,10 @@
                         <option value="5000">تعديل وترتيب وتنسيق فقط (5 آلاف)</option>
                     </select>
                 </div>
-                <div
+<div
                     style="display:flex; gap:10px; align-items:center; margin-bottom:20px; background: rgba(212,175,55,0.1); padding: 15px; border-radius: 8px;">
                     <input type="checkbox" id="isPractical" style="width:25px; height: 25px; cursor: pointer;">
-                    <label style="margin:0; font-size: 16px;">يوجد جانب عملي أو إحصائي (+40 ألف)</label>
+                    <label for="isPractical" style="margin:0; font-size: 16px;">يوجد جانب عملي أو إحصائي (+40 ألف)</label>
                 </div>
                 <div class="step-buttons">
                     <button type="button" class="btn-box btn-outline" style="flex: 1;" onclick="goToStep(1)">
@@ -140,15 +140,15 @@
             <div class="form-step" id="step3">
                 <h3 style="color:#d4af37; margin-bottom: 20px;">الخطوة 3: التسليم والتأكيد</h3>
                 <div class="form-group">
-                    <label>موعد التسليم النهائي المطلوب</label>
+                    <label for="deadline">موعد التسليم النهائي المطلوب</label>
                     <input type="date" id="deadline" required>
                 </div>
 
 
 
                 <div class="form-group">
-                    <label>ملاحظات إضافية</label>
-                    <textarea id="notes" rows="3" placeholder="أي تفاصيل أخرى تود إضافتها..."></textarea>
+                    <label for="notes">ملاحظات إضافية</label>
+                    <textarea id="notes" rows="3" placeholder="وضّح حالة البحث الحالية، المصادر المتوفرة، والجانب العملي أو الإحصائي إن وجد..."></textarea>
                 </div>
 
                 <div class="step-buttons">
