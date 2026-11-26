@@ -31,4 +31,16 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://red-triangle-team.vercel.app/pages/website-order.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://red-triangle-team.vercel.app/pages/app-order.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://red-triangle-team.vercel.app/pages/electronics-order.html</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>
